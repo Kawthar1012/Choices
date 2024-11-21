@@ -1,0 +1,23 @@
+.result-container {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: white;
+  transition: transform 0.2s;
+}
+
+  button:hover {
+    transform: scale(1.1);
+  }

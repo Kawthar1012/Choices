@@ -1,28 +1,26 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { QuestionOneComponent } from '../question-one/question-one.component';
-import { QuestionTwoComponent } from '../question-two/question-two.component';
-
-const routes: Routes = [
-  { path: 'question1', component: QuestionOneComponent, data: { animation: 'Question1Page' } },
-  { path: 'question2', component: QuestionTwoComponent, data: { animation: 'Question2Page' } },
-  { path: '', redirectTo: 'question1', pathMatch: 'full' } // default route to question 1
-];
+import { QuestionComponent } from './components/question/question.component';
+import { ResultComponent } from './components/result/result.component';
+import { AppRoutingModule } from './app-routing.module';
+import { pageAnimation } from './animations/page-animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionOneComponent,
-    QuestionTwoComponent
+    QuestionComponent,
+    ResultComponent, // Declare the result component
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes) 
+    BrowserAnimationsModule, // Required for animations
+    AppRoutingModule, // Import the routing module
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], // Bootstrap the app component
 })
 export class AppModule { }

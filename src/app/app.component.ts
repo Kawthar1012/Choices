@@ -1,34 +1,26 @@
-import { trigger, transition, style, animate, query } from '@angular/animations';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-export const slideInAnimation = trigger('routeAnimations', [
-  transition('* <=> *', [
-    query(':enter, :leave', [
-      style({ position: 'absolute', width: '100%' })
-    ], { optional: true }),
-    query(':enter', [
-      style({ transform: 'translateX(100%)', opacity: 0 })
-    ], { optional: true }),
-    query(':leave', [
-      animate('600ms ease', style({ transform: 'translateX(-100%)', opacity: 0 }))
-    ], { optional: true }),
-    query(':enter', [
-      animate('600ms ease', style({ transform: 'translateX(0%)', opacity: 1 }))
-    ], { optional: true })
-  ])
-]);
-
+import { trigger, transition, animate, style } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  /*standalone: true,*/
-  animations: [slideInAnimation]// Attach the animation here
+  animations: [
+    trigger('routeAnimations', [
+      transition('isLeft <=> isRight', [
+        style({ position: 'relative', overflow: 'hidden' }),
+        animate('0.5s ease', style({ transform: 'translateX(0)' })),
+      ]),
+      transition('isTop <=> isBottom', [
+        style({ position: 'relative', overflow: 'hidden' }),
+        animate('0.5s ease', style({ transform: 'translateY(0)' })),
+      ])
+    ]),
+  ]
 })
 export class AppComponent {
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    return outlet?.activatedRouteData?.['animation'];
   }
 }

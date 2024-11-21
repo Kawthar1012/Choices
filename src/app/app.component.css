@@ -1,4 +1,4 @@
-@keyframes slide-left {
+/*@keyframes slide-left {
   to {
     transform: translateX(-33px);
   }
@@ -17,3 +17,4 @@
 ::view-transition-new(root) {
   animation: 2s slide-right;
 }
+*/

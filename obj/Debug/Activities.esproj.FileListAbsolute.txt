@@ -1,0 +1,2 @@
+C:\Users\kel\source\repos\Activities\Activities\obj\Debug\Activities.esproj.SuggestedBindingRedirects.cache
+C:\Users\kel\source\repos\Activities\Activities\obj\Debug\Activities.esproj.CoreCompileInputs.cache
