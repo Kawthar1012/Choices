@@ -4,9 +4,11 @@ import { QuestionComponent } from './components/question/question.component';
 import { ResultComponent } from './components/result/result.component';
 
 const routes: Routes = [
-  { path: '', component: QuestionComponent, data: { animation: 'isLeft' } },
-  { path: 'result', component: ResultComponent, data: { animation: 'isRight' } }
+  { path: 'question/:id', component: QuestionComponent },
+  { path: 'result/:id', component: ResultComponent },
+  { path: '', redirectTo: '/question/q1', pathMatch: 'full' },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

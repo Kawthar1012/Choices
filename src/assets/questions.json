@@ -1,0 +1,56 @@
+[
+  {
+    "id": "q1",
+    "question": "What is your favorite color?",
+    "options": [
+      {
+        "text": "Red",
+        "dir": "left",
+        "next": "q2"
+      },
+      {
+        "text": "Blue",
+        "dir": "top",
+        "next": "q3"
+      },
+      {
+        "text": "Green",
+        "dir":  "right",
+        "next": "q4"
+      }
+    ]
+  },
+  {
+    "id": "q2",
+    "question": "Why do you like red?",
+    "options": [
+      {
+        "text": "It’s vibrant",
+        "dir":  "right",
+        "next": "result1"
+      },
+      {
+        "text": "It’s bold",
+        "dir":  "left",
+        "next": "result2"
+      }
+    ]
+  },
+  {
+    "id": "q3",
+    "question": "Why do you like blue?",
+    "options": [
+      {
+        "text": "It’s calming",
+        "dir": "bottom",
+        "next": "result1"
+      },
+      {
+        "text": "It’s classic",
+        "dir": "top",
+        "next": "result3"
+      }
+    ]
+  }
+]
+

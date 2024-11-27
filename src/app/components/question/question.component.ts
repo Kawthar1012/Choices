@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { pageAnimation } from '../../animations/page-animations'; 
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QuestionService } from '../../services/question.service';
+import { pageAnimation } from '../../animations/page-animations';
 
 @Component({
   selector: 'app-question',
@@ -8,12 +9,41 @@ import { pageAnimation } from '../../animations/page-animations';
   styleUrls: ['./question.component.css'],
   animations: [pageAnimation]
 })
-export class QuestionComponent {
+export class QuestionComponent implements OnInit {
+  direction: string = "right";
+  questions: any;
+  question: any;
 
-  constructor(private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private questionService: QuestionService
+  ) { }
 
-  navigate(direction: string): void {
-    // This will add a dynamic URL parameter to track the direction, if needed.
-    this.router.navigate(['/result'], { queryParams: { direction: direction } });
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      console.log("has direction");
+      this.direction = params['direction'];  // Capture direction from query params
+    });
+    const questionId = this.route.snapshot.paramMap.get('id');
+    this.loadQuestion(questionId);
+  }
+
+  loadQuestion(questionId: string | null): void {
+    this.questionService.getQuestions().subscribe((data) => {
+      this.questions = data;
+      this.question = this.questions[0]; // Start with the first question
+    });
+  }
+
+  onOptionClick(nextId: string, dir: string): void {
+    const nextQuestion = this.questions.find((q: { id: string; }) => q.id === nextId);
+
+    if (nextId.startsWith('result')) {
+      this.router.navigate(['/result/'+nextId], { queryParams: { direction: dir } });
+    } else {
+      this.question = nextQuestion;
+      this.router.navigate(['/question/' + nextId], { queryParams: { direction: dir } });
+    }
   }
 }

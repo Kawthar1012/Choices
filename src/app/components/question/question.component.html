@@ -1,8 +1,13 @@
-<div [@pageAnimation]>
-  <div class="container">
-    <button class="left" (click)="navigate('left')">Bored</button>
-    <button class="top" (click)="navigate('top')">Good!</button>
-    <button class="right" (click)="navigate('right')">Sad</button>
-    <button class="bottom" (click)="navigate('bottom')">Tired</button>
+<div *ngIf="question" class="question-container" [@pageAnimation]="direction">
+    <h2>{{ question.question }}</h2>
+    <div class="options">
+      <button *ngFor="let option of question.options"
+              [ngClass]="option.dir"
+              (click)="onOptionClick(option.next,option.dir)">
+        {{ option.text }}
+      </button>
+    </div>
   </div>
-</div>
+  <div *ngIf="!question" class="loading">
+    Loading...
+  </div>

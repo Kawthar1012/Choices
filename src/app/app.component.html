@@ -1,1 +1,3 @@
-<router-outlet [@pageAnimation]></router-outlet>
+<div [@routeAnimations]="getRouterOutletState(outlet)" class="router-container">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
