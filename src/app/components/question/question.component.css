@@ -1,47 +1,60 @@
-/* Style for the buttons and the screen layout */
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+* {
+  font-family: 'Poiret One', sans-serif;
+}
+
 button {
   position: absolute;
-  background-color: #4CAF50; /* Green background */
   color: white;
-  border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-  button:hover {
-    transform: scale(1.1);
-  }
 
-/* Position buttons on each side */
 .left {
-  left: 0;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .right {
-  right: 0;
+  right: 10px; 
   top: 50%;
   transform: translateY(-50%);
 }
 
 .top {
-  top: 0;
+  top: 10px; 
   left: 50%;
   transform: translateX(-50%);
 }
 
 .bottom {
-  bottom: 0;
+  bottom: 10px; 
   left: 50%;
   transform: translateX(-50%);
 }
 
+
 .question-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
+  background: url('../../../assets/background.png');
 }
+
+  .question-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+  }

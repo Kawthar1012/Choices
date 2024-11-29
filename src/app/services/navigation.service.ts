@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class NavigationService {
-  private direction: string = 'Left'; // Default transition direction
+  private direction: string = 'Left'; 
 
   setDirection(dir: string) {
     this.direction = dir;

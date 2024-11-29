@@ -23,7 +23,7 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       console.log("has direction");
-      this.direction = params['direction'];  // Capture direction from query params
+      this.direction = params['direction'];  
     });
     const questionId = this.route.snapshot.paramMap.get('id');
     this.loadQuestion(questionId);
@@ -32,7 +32,7 @@ export class QuestionComponent implements OnInit {
   loadQuestion(questionId: string | null): void {
     this.questionService.getQuestions().subscribe((data) => {
       this.questions = data;
-      this.question = this.questions[0]; // Start with the first question
+      this.question = this.questions[0]; 
     });
   }
 

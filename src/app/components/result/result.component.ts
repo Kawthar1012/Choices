@@ -15,10 +15,9 @@ export class ResultComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // Get the result ID from the route
     this.resultId = this.route.snapshot.paramMap.get('id');
     this.route.queryParams.subscribe(params => {
-      this.direction = params['direction'];  // Capture direction from query params
+      this.direction = params['direction'];  
     });
   }
 }

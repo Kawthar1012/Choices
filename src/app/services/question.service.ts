@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class QuestionService {
-  private questionsUrl = 'assets/questions.json'; // Path to your JSON file
+  private questionsUrl = 'assets/questions.json'; 
 
   constructor(private http: HttpClient) { }
 

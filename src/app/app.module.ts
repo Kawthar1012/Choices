@@ -12,15 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     QuestionComponent,
-    ResultComponent, // Declare the result component
+    ResultComponent, 
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, // Required for animations
-    AppRoutingModule, // Import the routing module
+    BrowserAnimationsModule, 
+    AppRoutingModule, 
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent], // Bootstrap the app component
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
