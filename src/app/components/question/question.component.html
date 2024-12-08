@@ -6,6 +6,14 @@
   </button>
 </div>
 
+<div *ngIf="previousQuestion" class="background-question-container">
+  <h2>{{ previousQuestion.question }}</h2>
+
+  <button *ngFor="let option of previousQuestion.options" [ngClass]="option.dir">
+    {{ option.text }}
+  </button>
+</div>
+
 <div *ngIf="!question" class="loading">
   Loading...
 </div>

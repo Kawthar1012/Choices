@@ -13,6 +13,7 @@ export class QuestionComponent implements OnInit {
   direction: string = "right";
   questions: any;
   question: any;
+  previousQuestion: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +23,6 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      console.log("has direction");
       this.direction = params['direction'];  
     });
     const questionId = this.route.snapshot.paramMap.get('id');
@@ -37,13 +37,18 @@ export class QuestionComponent implements OnInit {
   }
 
   onOptionClick(nextId: string, dir: string): void {
+    this.previousQuestion = this.question;
+    this.direction = dir;
     const nextQuestion = this.questions.find((q: { id: string; }) => q.id === nextId);
 
     if (nextId.startsWith('result')) {
-      this.router.navigate(['/result/'+nextId], { queryParams: { direction: dir } });
+      this.router.navigate(['/result/' + nextId], { queryParams: { direction: dir, questionId: this.route.snapshot.paramMap.get('id') } });
     } else {
       this.question = nextQuestion;
-      this.router.navigate(['/question/' + nextId], { queryParams: { direction: dir } });
+      setTimeout(() => {        
+        this.previousQuestion = null; 
+        this.router.navigate(['/question/' + nextId], { queryParams: { direction: dir } });
+      }, 1000);
     }
   }
 }

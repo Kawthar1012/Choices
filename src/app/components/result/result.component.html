@@ -1,4 +1,10 @@
 <div class="result-container" [@pageAnimation]="direction">
-  <h2>Result: {{ resultId }}</h2>
   <p>Congratulations! You have reached the result page for {{ resultId }}.</p>
+</div>
+
+<div *ngIf="previousQuestion" class="background-question-container">
+  <h2>{{ previousQuestion.question }}</h2>
+  <button *ngFor="let option of previousQuestion.options" [ngClass]="option.dir">
+    {{ option.text }}
+  </button>
 </div>
